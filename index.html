@@ -869,6 +869,112 @@
             max-width: 100%;
         }
 
+        /* === ADMISSION PAGE SPECIAL STYLES === */
+        .admission-hero {
+            background: linear-gradient(135deg, rgba(0, 183, 255, 0.08), rgba(0, 0, 0, 0.4));
+            border: 1px solid rgba(0, 183, 255, 0.2);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 32px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .admission-hero h2 {
+            font-size: 2.2rem;
+            color: #fff;
+            margin-bottom: 8px;
+            text-shadow: 0 2px 20px rgba(0, 183, 255, 0.3);
+        }
+
+        .admission-hero .admission-location {
+            font-size: 1.2rem;
+            color: #d0d0d0;
+            margin-bottom: 4px;
+        }
+
+        .admission-hero .admission-date {
+            font-size: 1.2rem;
+            color: #00b7ff;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .admission-hero .admission-free {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #fff;
+            background: linear-gradient(135deg, rgba(0, 183, 255, 0.2), rgba(0, 183, 255, 0.05));
+            display: inline-block;
+            padding: 8px 32px;
+            border-radius: 50px;
+            border: 2px solid rgba(0, 183, 255, 0.3);
+            margin-bottom: 16px;
+        }
+
+        .admission-hero .admission-free span {
+            color: #00b7ff;
+        }
+
+        .admission-hero p {
+            max-width: 100%;
+            color: #d0d0d0;
+        }
+
+        .admission-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12px;
+            max-width: 700px;
+            margin: 16px auto 0;
+            text-align: left;
+        }
+
+        .admission-list-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 8px;
+            padding: 10px 16px;
+            text-align: center;
+            font-size: 0.95rem;
+            color: #d0d0d0;
+            transition: all 0.3s ease;
+        }
+
+        .admission-list-item:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(0, 183, 255, 0.2);
+        }
+
+        .admission-list-item strong {
+            color: #f7f7f7;
+        }
+
+        /* === ABOUT PAGE SPECIAL STYLES === */
+        .about-highlight {
+            background: linear-gradient(135deg, rgba(0, 183, 255, 0.06), rgba(0, 0, 0, 0.2));
+            border-left: 4px solid #00b7ff;
+            padding: 20px 28px;
+            margin: 16px 0 24px;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .about-highlight p {
+            max-width: 100%;
+            margin-bottom: 6px;
+        }
+
+        .about-highlight strong {
+            color: #fff;
+        }
+
+        .about-mission {
+            font-size: 1.2rem;
+            color: #00b7ff;
+            font-weight: 600;
+            margin: 16px 0 8px;
+        }
+
         /* === FOOTER === */
         .footer {
             background-color: rgba(0, 0, 0, 0.85);
@@ -1026,6 +1132,23 @@
             .hotel-promo .hotel-rate {
                 font-size: 1.5rem;
             }
+
+            .admission-hero {
+                padding: 24px;
+            }
+
+            .admission-hero h2 {
+                font-size: 1.8rem;
+            }
+
+            .admission-hero .admission-free {
+                font-size: 1.5rem;
+                padding: 6px 20px;
+            }
+
+            .admission-list {
+                grid-template-columns: 1fr 1fr;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1118,6 +1241,27 @@
 
             .hotel-promo .hotel-rate {
                 font-size: 1.2rem;
+            }
+
+            .admission-hero {
+                padding: 16px;
+            }
+
+            .admission-hero h2 {
+                font-size: 1.4rem;
+            }
+
+            .admission-hero .admission-free {
+                font-size: 1.2rem;
+                padding: 4px 16px;
+            }
+
+            .admission-list {
+                grid-template-columns: 1fr;
+            }
+
+            .about-highlight {
+                padding: 16px 20px;
             }
         }
     </style>
@@ -1262,14 +1406,16 @@
     </div>
 
     <!-- ============================================================ -->
-    <!-- ===== ABOUT PAGE ===== -->
+    <!-- ===== ABOUT PAGE - UPDATED ===== -->
     <!-- ============================================================ -->
     <div id="page-about" class="page-content">
         <div class="container">
+            <!-- FLYER IMAGE AT THE TOP -->
             <div class="flyer-container">
                 <img src="https://i.imgur.com/m7QkdnD.jpeg" alt="MidFlorida Card Expo Flyer">
             </div>
 
+            <!-- PROMO CONTENT BLOCK -->
             <div class="promo-block">
                 <h2>Join us for MidFlorida Card Expo</h2>
                 <p class="promo-subtitle">🎉🔥 MIDFLORIDA CARD EXPO 🔥🎉</p>
@@ -1324,37 +1470,38 @@
                 </div>
             </div>
 
+            <!-- REGISTER NOW SECTION -->
             <div style="text-align: center; margin-bottom: 40px; padding: 32px; background: linear-gradient(135deg, rgba(0, 183, 255, 0.1), rgba(0, 0, 0, 0.4)); border-radius: 16px; border: 1px solid rgba(0, 183, 255, 0.15);">
                 <h2 style="color: #fff; font-size: 1.8rem; margin-bottom: 12px;">Register now for MidFlorida Card Expo!</h2>
                 <p style="color: #d0d0d0; max-width: 700px; margin: 0 auto 20px;">Don't wait! Secure your spot at MidFlorida Card Expo today and get ready to be blown away by the amazing performances and activities we have in store. Limited tickets available!</p>
                 <a href="https://midfloridacardexpo.simpletix.com/" target="_blank" class="btn-primary">Register Now</a>
             </div>
 
+            <!-- ABOUT CONTENT - UPDATED -->
             <h1>About MidFlorida Card Expo</h1>
-            <p class="page-subtitle">The story behind the region's premier card event</p>
-            
+            <p class="page-subtitle">Where passion, community, and the love of the hobby come together</p>
+
             <div class="page-section">
-                <h3>Our Story</h3>
-                <p>The MidFlorida Card Expo was created to bring together collectors, families, and fans of all ages in a vibrant, community-focused environment. Located in the heart of Port St. Lucie, FL, at the MIDFLORIDA Event Center, our expo combines hobby excitement with classic Florida sunshine.</p>
-                <p>What started as a small gathering of card enthusiasts has grown into one of the region's premier card events, featuring over 230 vendor tables and attracting visitors from across the state.</p>
+                <h3>Our Mission</h3>
+                <p>At the heart of Port St. Lucie's growing hobby scene is <strong style="color:#fff;">JJCK Collectibles</strong>, more than just a local card shop, it's a place where passion, community, and the love of the hobby come together.</p>
+
+                <div class="about-highlight">
+                    <p style="font-size: 1.1rem;"><strong>📍 1344 SW Bayshore Blvd, Port St. Lucie, FL 34953</strong></p>
+                </div>
+
+                <p>JJCK Collectibles has become a go-to destination for collectors of all levels — from first-time pack rippers to seasoned hobby veterans chasing their next big hit.</p>
+                <p>But this isn't your typical shop.</p>
+                <p>JJCK Collectibles is built on the belief that the hobby is bigger than buying and selling — it's about connection, excitement, and bringing people together. Whether it's through in-store experiences, engaging with collectors, or supporting the local scene, JJCK is deeply rooted in the community.</p>
             </div>
 
             <div class="page-section">
-                <h3>What We Offer</h3>
-                <ul>
-                    <li><strong>230+ Vendor Tables</strong> – A massive selection of trading cards, sports memorabilia, and collectibles</li>
-                    <li><strong>Kid Zones & Activities</strong> – Family-friendly entertainment for collectors of all ages</li>
-                    <li><strong>Buy, Sell & Trade</strong> – A marketplace for collectors to connect and do business</li>
-                    <li><strong>Community Atmosphere</strong> – A welcoming environment for beginners and serious hobbyists alike</li>
-                </ul>
-            </div>
-
-            <div class="page-section">
-                <h3>Location</h3>
-                <p><strong>MIDFLORIDA Event Center</strong><br>
-                9221 SE Event Center Place<br>
-                Port St. Lucie, FL 34952</p>
-                <p>The event center offers ample parking, comfortable indoor facilities, and easy access from major highways.</p>
+                <h3>Taking the Hobby to the Next Level</h3>
+                <p>That same passion is what led to the creation of the <strong style="color:#fff;">MidFlorida Card Expo</strong>.</p>
+                <p>Presented by JJCK Collectibles, the Expo is a natural extension of what the shop stands for — family-friendly fun, community involvement, and an unforgettable hobby experience.</p>
+                <p>From hosting events to building a space where collectors, vendors, and families can connect, JJCK Collectibles is committed to pushing the hobby forward and creating something truly special.</p>
+                <div class="about-highlight" style="border-left-color: #fff;">
+                    <p style="font-size: 1.2rem; font-weight: 700; color: #fff; text-align: center;">This isn't just a card shop.<br>This is where the community grows.</p>
+                </div>
             </div>
 
             <button class="btn-back" onclick="showPage('home')">← Back to Home</button>
@@ -1368,30 +1515,32 @@
         <div class="container">
             <h1>Admission</h1>
             <p class="page-subtitle">Plan your visit to the MidFlorida Card Expo</p>
-            
-            <div class="page-section">
-                <h3>General Admission</h3>
-                <p><strong>Adults (13+)</strong> – $12.00<br>
-                <strong>Children (6-12)</strong> – $8.00<br>
-                <strong>Children 5 & Under</strong> – Free</p>
-                <p>Tickets are available at the door or online in advance. Online ticket purchases help you skip the line and get in faster!</p>
+
+            <div class="admission-hero">
+                <h2>🌴 MIDFLORIDA CARD EXPO</h2>
+                <p class="admission-location">📍 MIDFLORIDA Event Center, Port St. Lucie, FL</p>
+                <p class="admission-date">🗓 October 24 & 25, 2026</p>
+                
+                <div class="admission-free">
+                    CHILDREN 10 & Younger <span>FREE</span>
+                </div>
+                
+                <p>Florida's premier weekend of cards, collectibles, and community is coming to the Treasure Coast! 🌞 Whether you're a lifelong collector or brand new to the hobby, the MIDFLORIDA Card Expo is where passion meets paradise.</p>
+                <p>Join collectors, vendors, and fans from all over for 250+ tables loaded with:</p>
+                
+                <div class="admission-list">
+                    <div class="admission-list-item">🏈 <strong>Sports Cards</strong></div>
+                    <div class="admission-list-item">🃏 <strong>Pokémon, Magic: The Gathering, One Piece &amp; more TCGs</strong></div>
+                    <div class="admission-list-item">📚 <strong>Comics, collectibles &amp; memorabilia</strong></div>
+                </div>
+                
+                <p style="margin-top: 16px; font-size: 1.2rem; font-weight: 700; color: #fff;">Buy. Sell. Trade. Explore. Repeat. 🔥</p>
             </div>
 
-            <div class="page-section">
-                <h3>VIP Experience</h3>
-                <p><strong>VIP Pass</strong> – $30.00</p>
-                <ul>
-                    <li>Early entry 1 hour before general admission</li>
-                    <li>Exclusive VIP merchandise</li>
-                    <li>Commemorative event badge</li>
-                    <li>Access to VIP lounge</li>
-                </ul>
-            </div>
-
-            <div class="page-section">
-                <h3>Get Your Tickets</h3>
-                <p>Secure your spot today! Tickets sell out quickly.</p>
-                <a href="https://midfloridacardexpo.simpletix.com/" target="_blank" class="btn-primary">Buy Tickets Now</a>
+            <div style="text-align: center; padding: 32px; background: linear-gradient(135deg, rgba(0, 183, 255, 0.08), rgba(0, 0, 0, 0.3)); border-radius: 16px; border: 1px solid rgba(0, 183, 255, 0.15);">
+                <h3 style="margin-top: 0; color: #fff; font-size: 1.8rem;">🎟️ Get Your Tickets</h3>
+                <p style="max-width: 100%; color: #d0d0d0;">Secure your spot today! Tickets sell out quickly.</p>
+                <a href="https://midfloridacardexpo.simpletix.com/" target="_blank" class="btn-primary" style="margin-top: 8px;">Buy Tickets Now</a>
             </div>
 
             <button class="btn-back" onclick="showPage('home')">← Back to Home</button>
@@ -1497,11 +1646,10 @@
     </div>
 
     <!-- ============================================================ -->
-    <!-- ===== HOTEL PAGE WITH UPDATED BUTTON ===== -->
+    <!-- ===== HOTEL PAGE ===== -->
     <!-- ============================================================ -->
     <div id="page-hotel" class="page-content">
         <div class="container">
-            <!-- SMALL FLYER IMAGE AT THE TOP -->
             <div class="flyer-container-small">
                 <img src="https://i.imgur.com/LUp3NeI.jpeg" alt="MidFlorida Card Expo Hotel Flyer">
             </div>
@@ -1519,7 +1667,6 @@
                 </ul>
             </div>
 
-            <!-- HOTEL PROMO SECTION -->
             <div class="hotel-promo">
                 <h3>📍 Best Western Port St. Lucie</h3>
                 <p style="font-size: 1.1rem; color: #d0d0d0;">7900 S US Hwy 1<br>Port St. Lucie, FL 34952</p>
@@ -1699,7 +1846,7 @@
             </div>
             <div class="footer-copy">
                 Copyright &copy; 2026 MidFlorida Card Expo - All Rights Reserved.<br>
-                Powered by <a href="https://www.godaddy.com/websites/website-builder" target="_blank">GoDaddy</a>
+                Powered by <a href="https://www.godaddy.com/websites/website-builder" target="_blank">Sydrel</a>
             </div>
         </div>
     </footer>
