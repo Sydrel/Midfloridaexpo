@@ -107,7 +107,7 @@
             color: #00b7ff;
         }
 
-        /* === PAGE CONTENT - NEW LAYOUT === */
+        /* === PAGE CONTENT === */
         .page-content {
             display: none;
             padding: 60px 20px 40px;
@@ -151,6 +151,13 @@
             font-weight: 600;
         }
 
+        .page-content h4 {
+            font-size: 1.1rem;
+            color: #00b7ff;
+            margin: 20px 0 10px;
+            font-weight: 600;
+        }
+
         .page-content p {
             color: #d0d0d0;
             margin-bottom: 18px;
@@ -190,7 +197,6 @@
             color: #f7f7f7;
         }
 
-        /* Page section dividers */
         .page-section {
             padding: 24px 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.06);
@@ -248,7 +254,6 @@
             border-color: #fff;
         }
 
-        /* Vendor page special styling */
         .vendor-highlight {
             background: linear-gradient(135deg, rgba(0, 183, 255, 0.08), rgba(0, 183, 255, 0.02));
             border-left: 4px solid #00b7ff;
@@ -258,6 +263,98 @@
 
         .vendor-highlight p:last-child {
             margin-bottom: 0;
+        }
+
+        /* Event schedule cards */
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin: 16px 0;
+        }
+
+        .schedule-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .schedule-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(0, 183, 255, 0.2);
+        }
+
+        .schedule-card h4 {
+            color: #00b7ff;
+            margin-top: 0;
+            margin-bottom: 12px;
+        }
+
+        .schedule-card p {
+            font-size: 0.95rem;
+            margin-bottom: 6px;
+            max-width: 100%;
+        }
+
+        /* After party section */
+        .after-party {
+            background: linear-gradient(135deg, rgba(0, 183, 255, 0.1), rgba(0, 0, 0, 0.4));
+            border: 1px solid rgba(0, 183, 255, 0.2);
+            border-radius: 16px;
+            padding: 32px;
+            margin: 16px 0;
+            text-align: center;
+        }
+
+        .after-party h3 {
+            font-size: 1.6rem;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .after-party .party-sub {
+            color: #00b7ff;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+        }
+
+        .after-party p {
+            max-width: 100%;
+        }
+
+        .after-party .performers {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+            margin: 12px 0;
+        }
+
+        .after-party .performers span {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #fff;
+            background: rgba(0, 183, 255, 0.1);
+            padding: 6px 18px;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 183, 255, 0.15);
+        }
+
+        /* Load-in image */
+        .loadin-container {
+            margin: 16px 0 24px;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .loadin-container img {
+            width: 100%;
+            display: block;
+            height: auto;
         }
 
         /* === HERO (Home) === */
@@ -303,7 +400,7 @@
             border-color: #fff;
         }
 
-        /* === SOCIAL MARQUEE WITH LOGO === */
+        /* === SOCIAL MARQUEE === */
         .social-bar {
             background-color: rgba(0, 0, 0, 0.7);
             padding: 16px 0;
@@ -338,7 +435,6 @@
             object-fit: contain;
             display: block;
             padding: 6px;
-            /* REMOVED: filter: brightness(0) invert(1); */
             transition: filter 0.3s ease;
         }
 
@@ -348,10 +444,6 @@
             box-shadow: 0 0 25px rgba(0, 183, 255, 0.3);
         }
 
-        .social-logo:hover img {
-            /* REMOVED: filter: brightness(0) invert(1) drop-shadow(0 0 8px rgba(0, 183, 255, 0.5)); */
-        }
-
         @keyframes scroll {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
@@ -359,51 +451,108 @@
 
         /* === COUNTDOWN === */
         .countdown {
-            background-color: rgba(0, 0, 0, 0.7);
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.85), rgba(0, 183, 255, 0.1));
             text-align: center;
-            padding: 60px 20px;
+            padding: 70px 20px 80px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .countdown::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(0, 183, 255, 0.05) 0%, transparent 70%);
+            animation: pulseGlow 4s ease-in-out infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 1; }
         }
 
         .countdown h2 {
-            font-size: 2rem;
+            font-size: 2.2rem;
             color: #fff;
             margin-bottom: 8px;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            text-shadow: 0 2px 20px rgba(0, 183, 255, 0.3);
+            position: relative;
+            z-index: 1;
+            letter-spacing: 2px;
         }
 
-        .countdown p {
-            color: #fff;
-            opacity: 0.8;
-            margin-bottom: 32px;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        .countdown .sub-text {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+            position: relative;
+            z-index: 1;
+            letter-spacing: 4px;
+            text-transform: uppercase;
         }
 
         .clock {
             display: flex;
             justify-content: center;
-            gap: 24px;
+            gap: 30px;
             flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
         }
 
         .clock-block {
-            background: rgba(255, 255, 255, 0.9);
-            color: #000;
-            padding: 12px 20px;
-            border-radius: 8px;
-            min-width: 80px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 20px 28px;
+            min-width: 100px;
             text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .clock-block:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 183, 255, 0.4);
+            box-shadow: 0 12px 48px rgba(0, 183, 255, 0.15);
         }
 
         .clock-block .value {
-            font-size: 2rem;
+            font-size: 3.5rem;
             font-weight: 700;
+            color: #fff;
+            text-shadow: 0 0 30px rgba(0, 183, 255, 0.3);
+            line-height: 1;
+            font-variant-numeric: tabular-nums;
+            letter-spacing: 2px;
         }
 
         .clock-block .label {
-            font-size: 12px;
+            font-size: 0.8rem;
             text-transform: uppercase;
-            color: #555;
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 8px;
+            letter-spacing: 3px;
+            font-weight: 600;
+        }
+
+        .clock-expired {
+            color: #fff;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-shadow: 0 0 40px rgba(0, 183, 255, 0.5);
+            animation: pulseText 2s ease-in-out infinite;
+        }
+
+        @keyframes pulseText {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.05); }
         }
 
         /* === FEATURED CONTENT (Home) === */
@@ -429,16 +578,11 @@
         }
 
         .section-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 3px;
-            background: #00b7ff;
-            margin: 12px auto 0;
+            display: none;
         }
 
         .section-title.light::after {
-            background: #fff;
+            display: none;
         }
 
         .feature-grid {
@@ -516,6 +660,213 @@
 
         .follow-link:hover {
             color: #77c7ff;
+        }
+
+        /* === FLYER IMAGE STYLING === */
+        .flyer-container {
+            margin-bottom: 32px;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            background: rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .flyer-container:hover {
+            transform: scale(1.01);
+            box-shadow: 0 12px 48px rgba(0, 183, 255, 0.15);
+            border-color: rgba(0, 183, 255, 0.3);
+        }
+
+        .flyer-container img {
+            width: 100%;
+            display: block;
+            height: auto;
+        }
+
+        /* === SMALL FLYER IMAGE STYLING === */
+        .flyer-container-small {
+            max-width: 600px;
+            margin: 0 auto 32px;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            background: rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .flyer-container-small:hover {
+            transform: scale(1.02);
+            box-shadow: 0 12px 48px rgba(0, 183, 255, 0.15);
+            border-color: rgba(0, 183, 255, 0.3);
+        }
+
+        .flyer-container-small img {
+            width: 100%;
+            display: block;
+            height: auto;
+        }
+
+        /* === HOTEL PROMO SECTION === */
+        .hotel-promo {
+            background: linear-gradient(135deg, rgba(0, 183, 255, 0.08), rgba(0, 0, 0, 0.4));
+            border: 1px solid rgba(0, 183, 255, 0.2);
+            border-radius: 16px;
+            padding: 32px 40px;
+            margin: 16px 0 24px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .hotel-promo h3 {
+            color: #00b7ff;
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+        }
+
+        .hotel-promo .hotel-rate {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #fff;
+            margin: 8px 0;
+        }
+
+        .hotel-promo .hotel-rate span {
+            color: #00b7ff;
+        }
+
+        .hotel-promo ul {
+            max-width: 100%;
+        }
+
+        .hotel-promo ul li {
+            padding: 8px 0 8px 28px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            position: relative;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .hotel-promo ul li:last-child {
+            border-bottom: none;
+        }
+
+        .hotel-promo ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #00b7ff;
+            font-weight: 700;
+        }
+
+        /* === PROMO CONTENT BLOCK === */
+        .promo-block {
+            background: linear-gradient(135deg, rgba(0, 183, 255, 0.08), rgba(0, 0, 0, 0.6));
+            border: 1px solid rgba(0, 183, 255, 0.2);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 40px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .promo-block h2 {
+            font-size: 2.2rem;
+            color: #fff;
+            margin-bottom: 8px;
+            text-shadow: 0 2px 20px rgba(0, 183, 255, 0.3);
+        }
+
+        .promo-block .promo-subtitle {
+            font-size: 1.6rem;
+            color: #00b7ff;
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: 2px;
+        }
+
+        .promo-block .promo-description {
+            font-size: 1.1rem;
+            color: #d0d0d0;
+            margin-bottom: 24px;
+            max-width: 100%;
+        }
+
+        .promo-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            text-align: left;
+            margin: 24px 0;
+        }
+
+        .promo-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 12px;
+            padding: 20px 24px;
+            transition: all 0.3s ease;
+        }
+
+        .promo-item:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(0, 183, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .promo-item h4 {
+            color: #00b7ff;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .promo-item p {
+            color: #d0d0d0;
+            font-size: 0.95rem;
+            margin-bottom: 0;
+            max-width: 100%;
+        }
+
+        .promo-item ul {
+            list-style: none;
+            margin: 4px 0 0 0;
+            max-width: 100%;
+        }
+
+        .promo-item ul li {
+            color: #d0d0d0;
+            font-size: 0.95rem;
+            padding: 4px 0 4px 20px;
+            border-bottom: none;
+            position: relative;
+        }
+
+        .promo-item ul li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #00b7ff;
+            font-weight: 700;
+        }
+
+        .promo-divider {
+            border: none;
+            border-top: 2px solid rgba(0, 183, 255, 0.2);
+            margin: 20px auto;
+            max-width: 300px;
+        }
+
+        .promo-footer {
+            margin-top: 24px;
+        }
+
+        .promo-footer p {
+            color: #d0d0d0;
+            font-size: 1.1rem;
+            max-width: 100%;
         }
 
         /* === FOOTER === */
@@ -605,6 +956,76 @@
             .logo img {
                 height: 75px;
             }
+
+            .clock-block {
+                padding: 16px 20px;
+                min-width: 70px;
+            }
+
+            .clock-block .value {
+                font-size: 2.5rem;
+            }
+
+            .clock {
+                gap: 16px;
+            }
+
+            .countdown h2 {
+                font-size: 1.8rem;
+            }
+
+            .promo-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .promo-block {
+                padding: 24px;
+            }
+
+            .promo-block h2 {
+                font-size: 1.8rem;
+            }
+
+            .promo-block .promo-subtitle {
+                font-size: 1.3rem;
+            }
+
+            .promo-item {
+                padding: 16px;
+            }
+
+            .schedule-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .after-party {
+                padding: 24px;
+            }
+
+            .after-party h3 {
+                font-size: 1.3rem;
+            }
+
+            .after-party .performers {
+                gap: 12px;
+            }
+
+            .after-party .performers span {
+                font-size: 0.95rem;
+                padding: 4px 14px;
+            }
+
+            .flyer-container-small {
+                max-width: 100%;
+            }
+
+            .hotel-promo {
+                padding: 24px;
+            }
+
+            .hotel-promo .hotel-rate {
+                font-size: 1.5rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -614,16 +1035,22 @@
             }
 
             .clock {
-                gap: 12px;
+                gap: 10px;
             }
 
             .clock-block {
-                min-width: 60px;
-                padding: 8px 12px;
+                padding: 12px 14px;
+                min-width: 55px;
+                border-radius: 12px;
             }
 
             .clock-block .value {
-                font-size: 1.5rem;
+                font-size: 1.8rem;
+            }
+
+            .clock-block .label {
+                font-size: 0.6rem;
+                letter-spacing: 1px;
             }
 
             .social-track {
@@ -646,6 +1073,51 @@
 
             .logo img {
                 height: 60px;
+            }
+
+            .countdown {
+                padding: 50px 16px 60px;
+            }
+
+            .countdown h2 {
+                font-size: 1.5rem;
+            }
+
+            .countdown .sub-text {
+                font-size: 0.8rem;
+                letter-spacing: 2px;
+            }
+
+            .promo-block {
+                padding: 16px;
+            }
+
+            .promo-block h2 {
+                font-size: 1.4rem;
+            }
+
+            .promo-block .promo-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .after-party {
+                padding: 16px;
+            }
+
+            .after-party h3 {
+                font-size: 1.1rem;
+            }
+
+            .flyer-container-small {
+                max-width: 100%;
+            }
+
+            .hotel-promo {
+                padding: 16px;
+            }
+
+            .hotel-promo .hotel-rate {
+                font-size: 1.2rem;
             }
         }
     </style>
@@ -685,7 +1157,6 @@
     <!-- ===== HOME PAGE ===== -->
     <!-- ============================================================ -->
     <div id="page-home" class="page-content active">
-        <!-- HERO -->
         <section class="hero">
             <div class="container">
                 <h1>MidFlorida Card Expo</h1>
@@ -694,7 +1165,6 @@
             </div>
         </section>
 
-        <!-- SOCIAL MARQUEE -->
         <div class="social-bar">
             <div class="social-track">
                 <a href="https://www.facebook.com/Midfloridacardexpo" target="_blank" aria-label="Facebook">
@@ -709,7 +1179,6 @@
                 <a href="https://www.yelp.com/biz/midflorida-card-expo-port-st-lucie" target="_blank" aria-label="Yelp">
                     <span class="social-logo"><img src="https://i.imgur.com/389Tn2a.png" alt="Yelp"></span>
                 </a>
-                <!-- Duplicate for scrolling -->
                 <a href="https://www.facebook.com/Midfloridacardexpo" target="_blank" aria-label="Facebook">
                     <span class="social-logo"><img src="https://i.imgur.com/389Tn2a.png" alt="Facebook"></span>
                 </a>
@@ -725,21 +1194,31 @@
             </div>
         </div>
 
-        <!-- COUNTDOWN -->
         <section class="countdown">
             <div class="container">
-                <h2>Countdown Begins!</h2>
-                <p>Getting ready! Big things are coming your way!</p>
-                <div class="clock">
-                    <div class="clock-block"><div class="value">00</div><div class="label">Days</div></div>
-                    <div class="clock-block"><div class="value">00</div><div class="label">Hours</div></div>
-                    <div class="clock-block"><div class="value">00</div><div class="label">Minutes</div></div>
-                    <div class="clock-block"><div class="value">00</div><div class="label">Seconds</div></div>
+                <h2>🎯 Countdown Begins!</h2>
+                <p class="sub-text">The wait is almost over</p>
+                <div class="clock" id="countdown-clock">
+                    <div class="clock-block">
+                        <div class="value" id="days">00</div>
+                        <div class="label">Days</div>
+                    </div>
+                    <div class="clock-block">
+                        <div class="value" id="hours">00</div>
+                        <div class="label">Hours</div>
+                    </div>
+                    <div class="clock-block">
+                        <div class="value" id="minutes">00</div>
+                        <div class="label">Minutes</div>
+                    </div>
+                    <div class="clock-block">
+                        <div class="value" id="seconds">00</div>
+                        <div class="label">Seconds</div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- ABOUT PREVIEW -->
         <section class="section-dark">
             <div class="container">
                 <h2 class="section-title">Discover the MidFlorida Card Expo</h2>
@@ -764,7 +1243,6 @@
             </div>
         </section>
 
-        <!-- SOCIAL FEED -->
         <section class="section-black">
             <div class="container">
                 <h2 class="section-title light">Instagram</h2>
@@ -788,6 +1266,70 @@
     <!-- ============================================================ -->
     <div id="page-about" class="page-content">
         <div class="container">
+            <div class="flyer-container">
+                <img src="https://i.imgur.com/m7QkdnD.jpeg" alt="MidFlorida Card Expo Flyer">
+            </div>
+
+            <div class="promo-block">
+                <h2>Join us for MidFlorida Card Expo</h2>
+                <p class="promo-subtitle">🎉🔥 MIDFLORIDA CARD EXPO 🔥🎉</p>
+                <p class="promo-description">Get ready for an UNFORGETTABLE EXPERIENCE — bigger, louder, and better than ever! 🎶🍔🎮<br>Live music • Entertainment • Food & Drinks • NONSTOP FUN</p>
+
+                <hr class="promo-divider">
+
+                <div class="promo-grid">
+                    <div class="promo-item">
+                        <h4>🎮 FREE PLAY GAMING ZONE</h4>
+                        <ul>
+                            <li>🔥 Pokémon Games</li>
+                            <li>🔥 Smash Ultimate</li>
+                            <li>🔥 More All Weekend</li>
+                        </ul>
+                    </div>
+
+                    <div class="promo-item">
+                        <h4>🌟 POKÉMON TRAINER HUB</h4>
+                        <ul>
+                            <li>🤝 Meet Trainers</li>
+                            <li>🔁 Trade Pokémon</li>
+                            <li>⚔️ Battle on GO & Legends ZA</li>
+                        </ul>
+                    </div>
+
+                    <div class="promo-item">
+                        <h4>🎨 KIDS FUN ZONE</h4>
+                        <ul>
+                            <li>🎭 Face Painting</li>
+                            <li>🎉 Mascot Meet & Greet</li>
+                            <li>🖍️ Coloring Area</li>
+                        </ul>
+                    </div>
+
+                    <div class="promo-item">
+                        <h4>🏆 TOURNAMENTS</h4>
+                        <ul>
+                            <li>🔥 Smash Ultimate</li>
+                            <li>🏈 Madden Football</li>
+                            <li>🎁 Prizes + Registration Soon</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <hr class="promo-divider">
+
+                <div class="promo-footer">
+                    <p style="font-size: 1.3rem; font-weight: 700; color: #fff;">🎉 FUN FOR THE WHOLE FAMILY</p>
+                    <p>Cards • Games • Trades • Community</p>
+                    <p style="font-size: 1.1rem; margin-top: 12px;"><strong>🃏 HUGE CARD SHOW</strong><br>Explore sports cards, collectibles & vendors!</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-bottom: 40px; padding: 32px; background: linear-gradient(135deg, rgba(0, 183, 255, 0.1), rgba(0, 0, 0, 0.4)); border-radius: 16px; border: 1px solid rgba(0, 183, 255, 0.15);">
+                <h2 style="color: #fff; font-size: 1.8rem; margin-bottom: 12px;">Register now for MidFlorida Card Expo!</h2>
+                <p style="color: #d0d0d0; max-width: 700px; margin: 0 auto 20px;">Don't wait! Secure your spot at MidFlorida Card Expo today and get ready to be blown away by the amazing performances and activities we have in store. Limited tickets available!</p>
+                <a href="https://midfloridacardexpo.simpletix.com/" target="_blank" class="btn-primary">Register Now</a>
+            </div>
+
             <h1>About MidFlorida Card Expo</h1>
             <p class="page-subtitle">The story behind the region's premier card event</p>
             
@@ -865,27 +1407,89 @@
             <p class="page-subtitle">Experience the magic of MidFlorida Card Expo!</p>
 
             <div class="page-section vendor-highlight">
-                <h3>Vendor Experience at MidFlorida Card Expo</h3>
-                <p>Join us for one of the most exciting and fast-growing card shows in Florida, where vendors take center stage and the community comes alive.</p>
-                <p>MidFlorida Card Expo is more than just a day of selling — it's a vendor spotlight experience. Connect with passionate collectors, showcase your inventory, build relationships, and be part of a thriving hobby community that continues to grow with every show.</p>
-                <p>But it doesn't stop when the tables close.</p>
-                <p>As the day winds down, the energy shifts into a night of fun, trading, and community connection. From after-hours deals and conversations to a lively atmosphere filled with collectors and vendors alike, the Expo transforms into an unforgettable experience.</p>
+                <h3>🌴 MIDFLORIDA CARD EXPO</h3>
+                <p><strong>Presented at the MIDFLORIDA Event Center in Port St. Lucie, FL</strong><br>
+                <strong>October 24 & 25, 2026</strong></p>
+                <p><em>Vendor Tables are priced for both Days.</em></p>
+                <p>Get ready for Florida's premier weekend celebrating cards, collectibles, and community! The MIDFLORIDA Card Expo brings the excitement of the hobby to the heart of Port St. Lucie, where passion meets paradise.</p>
+                <p>Join collectors, vendors, and fans from across the region for 230+ tables filled with sports cards, Pokémon, Magic: The Gathering, One Piece, comics, TCGs, memorabilia, and more. Whether you're buying, selling, trading, or simply exploring, this show is the ultimate destination for hobby enthusiasts under the Florida sunshine.</p>
             </div>
 
             <div class="page-section">
-                <h3>Expect:</h3>
+                <h3>🌞 Join Us!</h3>
+                <p>Experience a full day of hobby fun, networking, and unforgettable discoveries at the MIDFLORIDA Card Expo. Come for the cards, comics, and collectibles—stay for the sunshine, community, and Treasure Coast charm.</p>
+                <p><strong>Secure your vendor table today — spaces are first come, first served!</strong> We look forward to seeing you!!!</p>
+
+                <div style="margin: 16px 0; padding: 20px; background: rgba(0, 183, 255, 0.05); border-radius: 12px; border: 1px solid rgba(0, 183, 255, 0.1);">
+                    <h4>📅 Date & Time</h4>
+                    <p><strong>October 24, 2026</strong> — 10:00 AM - 6:00 PM<br>
+                    <strong>October 25, 2026</strong> — 10:00 AM - 4:00 PM</p>
+                    <h4 style="margin-top: 12px;">📍 Venue Details</h4>
+                    <p><strong>MIDFLORIDA Event Center</strong><br>
+                    9221 Southeast Event Center Place<br>
+                    Port St. Lucie, Florida 34952</p>
+                </div>
+            </div>
+
+            <div class="page-section">
+                <h3>🌟 What to Expect</h3>
                 <ul>
-                    <li><strong>High foot traffic and engaged buyers</strong></li>
-                    <li><strong>A welcoming, community-driven environment</strong></li>
-                    <li><strong>Opportunities to network, trade, and grow your brand</strong></li>
-                    <li><strong>An exciting after-party vibe with food, drinks, and entertainment</strong></li>
+                    <li><strong>230+ Vendor Tables</strong> showcasing trading cards, collectibles, and memorabilia</li>
+                    <li><strong>Buy, Sell & Trade Opportunities</strong> with fellow collectors and top-tier dealers</li>
+                    <li><strong>Family-Friendly Environment</strong> welcoming fans of all ages</li>
+                    <li><strong>Convenient Location</strong> minutes from I-95 with easy access from South Florida, Orlando, and the Palm Beaches</li>
+                    <li><strong>Local Attractions</strong> including dining, shopping, and the beautiful Treasure Coast beaches!</li>
                 </ul>
             </div>
 
             <div class="page-section">
-                <h3>Get Your Tickets for MidFlorida Card Expo Now!</h3>
-                <p>Hurry and secure your tickets to MidFlorida Card Expo before they sell out! Don't miss your chance to be a part of this unforgettable experience. We can't wait to see you there!</p>
-                <a href="https://midfloridacardexpo.simpletix.com/" target="_blank" class="btn-primary">Vendor Tables</a>
+                <h3>🏆 Vendor Information</h3>
+                <p>Each vendor space includes:</p>
+                <ul>
+                    <li><strong>(1) Table</strong> (6' or 8', based on selection) <em>(Does not include tablecloth, available for an additional charge)</em></li>
+                    <li><strong>(2) Chairs</strong> (1 additional chair available upon request at the show)</li>
+                    <li><strong>(2) Vendor Passes</strong></li>
+                </ul>
+                <p>Vendors may select their own table location—reserve early for the best options. Once assigned, table placements cannot be changed, and all sales are final. No refunds will be issued under any circumstances. Payment confirms your commitment to the event.</p>
+            </div>
+
+            <div class="page-section">
+                <h3>🏆 2 EVENT SCHEDULE</h3>
+                
+                <div class="schedule-grid">
+                    <div class="schedule-card">
+                        <h4>📅 Saturday, October 24, 2026</h4>
+                        <p><strong>8:00 AM – 10:00 AM</strong> | Vendor & Sponsor Setup</p>
+                        <p><strong>10:00 AM – 6:00 PM</strong> | General Admission</p>
+                        <p><strong>6:00 PM</strong> | Show Closed</p>
+                    </div>
+                    <div class="schedule-card">
+                        <h4>📅 Sunday, October 25, 2026</h4>
+                        <p><strong>8:00 AM – 10:00 AM</strong> | Vendor & Sponsor Setup</p>
+                        <p><strong>10:00 AM – 4:00 PM</strong> | General Admission</p>
+                        <p><strong>4:00 PM</strong> | Show Closed</p>
+                    </div>
+                </div>
+
+                <div class="after-party">
+                    <h3>🎉 Community Trade Night After Party 🎉</h3>
+                    <p class="party-sub">All ages welcome!</p>
+                    <p><strong>📅 October 24th</strong> &nbsp;|&nbsp; <strong>⏰ 6–10 PM</strong></p>
+                    <p>Come out for a night of drinks, food, and lots of fun with the community!</p>
+                    <div class="performers">
+                        <span>🔥 The Dew Boys</span>
+                        <span>🔥 Mims</span>
+                        <span>🔥 The Poke Gangsta</span>
+                    </div>
+                    <p style="margin-top: 12px;"><strong>Don't miss it—bring your friends and keep the trade night energy going!</strong></p>
+                </div>
+            </div>
+
+            <div class="page-section">
+                <h3>Vendor Load-In</h3>
+                <div class="loadin-container">
+                    <img src="https://i.imgur.com/tnrgNMZ.png" alt="Vendor Load-In Map">
+                </div>
             </div>
 
             <button class="btn-back" onclick="showPage('home')">← Back to Home</button>
@@ -893,65 +1497,40 @@
     </div>
 
     <!-- ============================================================ -->
-    <!-- ===== HOTEL PAGE ===== -->
+    <!-- ===== HOTEL PAGE WITH UPDATED BUTTON ===== -->
     <!-- ============================================================ -->
     <div id="page-hotel" class="page-content">
         <div class="container">
-            <h1>Hotel Accommodations</h1>
-            <p class="page-subtitle">Find the perfect place to stay during your visit</p>
-
-            <div class="page-section">
-                <h3>Planning Your Stay</h3>
-                <p>Coming from out of town for the MidFlorida Card Expo? We've got you covered! Port St. Lucie offers a variety of comfortable hotels and accommodations to make your visit enjoyable. Whether you're looking for luxury, budget-friendly options, or something in between, there's something for everyone.</p>
-                <p>We recommend booking early, as rooms fill up quickly during event weekends.</p>
+            <!-- SMALL FLYER IMAGE AT THE TOP -->
+            <div class="flyer-container-small">
+                <img src="https://i.imgur.com/LUp3NeI.jpeg" alt="MidFlorida Card Expo Hotel Flyer">
             </div>
 
+            <h1>What is MidFlorida Card Expo Music Festival?</h1>
+            <p class="page-subtitle">Your home away from home during the Expo</p>
+
             <div class="page-section">
-                <h3>Official Expo Hotel</h3>
-                <p><strong>Hilton Garden Inn</strong><br>
-                8545 Commerce Centre Drive<br>
-                Port St. Lucie, FL 34986<br>
-                <a href="tel:7728718100">(772) 871-8100</a></p>
-                <p>Located just 5 minutes from the MIDFLORIDA Event Center. Ask for the "MidFlorida Card Expo" rate when booking!</p>
+                <p>The MidFlorida Card Expo is proud to offer a special discounted rate with the Best Western Port St. Lucie, conveniently located on US-1 just minutes from the MidFlorida Event Center.</p>
+                <p>Enjoy a comfortable stay at this all-suite hotel for just <strong style="color:#fff;">$94 per night</strong>, which includes:</p>
                 <ul>
-                    <li>Complimentary Wi-Fi</li>
-                    <li>Free parking</li>
-                    <li>Outdoor pool and fitness center</li>
-                    <li>On-site restaurant</li>
+                    <li><strong>Complimentary breakfast</strong></li>
+                    <li><strong>Access to a relaxing on-site pool</strong></li>
+                    <li><strong>Spacious suite-style rooms</strong></li>
                 </ul>
             </div>
 
-            <div class="page-section">
-                <h3>Nearby Hotel Options</h3>
-                <ul>
-                    <li><strong>Hampton Inn & Suites</strong> – 8601 Commerce Centre Drive, Port St. Lucie, FL 34986 – <a href="tel:7728711000">(772) 871-1000</a></li>
-                    <li><strong>Courtyard by Marriott</strong> – 8501 Champions Way, Port St. Lucie, FL 34986 – <a href="tel:7722075800">(772) 207-5800</a></li>
-                    <li><strong>Best Western Plus</strong> – 7900 SW Lost River Road, Stuart, FL 34997 – <a href="tel:7722872100">(772) 287-2100</a></li>
-                    <li><strong>Home2 Suites by Hilton</strong> – 9500 Reserve Boulevard, Port St. Lucie, FL 34986 – <a href="tel:7722108000">(772) 210-8000</a></li>
-                </ul>
+            <!-- HOTEL PROMO SECTION -->
+            <div class="hotel-promo">
+                <h3>📍 Best Western Port St. Lucie</h3>
+                <p style="font-size: 1.1rem; color: #d0d0d0;">7900 S US Hwy 1<br>Port St. Lucie, FL 34952</p>
+                <p class="hotel-rate">$<span>94</span> / night</p>
+                <p style="color: #d0d0d0;">This exclusive rate makes it easy for vendors, collectors, and families to stay close to the action while enjoying great amenities at an unbeatable value.</p>
             </div>
 
-            <div class="page-section">
-                <h3>Things to Do While You're Here</h3>
-                <p>Make the most of your trip to the Treasure Coast! Port St. Lucie and the surrounding area offer plenty of attractions:</p>
-                <ul>
-                    <li><strong>Savannas Recreation Area</strong> – Nature trails and wildlife viewing</li>
-                    <li><strong>St. Lucie River</strong> – Fishing, boating, and kayaking</li>
-                    <li><strong>Downtown Fort Pierce</strong> – Shopping, dining, and historic district</li>
-                    <li><strong>Jensen Beach</strong> – Beautiful Atlantic Ocean beaches</li>
-                    <li><strong>Treasure Coast Square Mall</strong> – Shopping and dining</li>
-                </ul>
-            </div>
-
-            <div class="page-section">
-                <h3>Travel Tips</h3>
-                <ul>
-                    <li><strong>Airport:</strong> Palm Beach International Airport (PBI) is about 45 minutes south</li>
-                    <li><strong>Orlando International Airport (MCO)</strong> is about 1.5 hours north</li>
-                    <li><strong>Rental cars</strong> are available at both airports</li>
-                    <li><strong>Uber and Lyft</strong> are available in the Port St. Lucie area</li>
-                    <li><strong>Parking</strong> at the event center is free</li>
-                </ul>
+            <div class="page-section" style="text-align: center; padding: 32px; background: linear-gradient(135deg, rgba(0, 183, 255, 0.08), rgba(0, 0, 0, 0.3)); border-radius: 16px; border: 1px solid rgba(0, 183, 255, 0.15);">
+                <h3 style="margin-top: 0;">🛎️ Ready to Book?</h3>
+                <p style="max-width: 100%;">Secure your room today and stay right near all the action!</p>
+                <a href="https://www.bestwestern.com/en_US/reservations/groups.html" target="_blank" class="btn-primary" style="margin-top: 8px;">BOOK NOW</a>
             </div>
 
             <button class="btn-back" onclick="showPage('home')">← Back to Home</button>
@@ -1129,30 +1708,25 @@
 <!-- ===== NAVIGATION SCRIPT ===== -->
 <script>
     function showPage(pageId) {
-        // Hide all pages
         document.querySelectorAll('.page-content').forEach(function(page) {
             page.classList.remove('active');
         });
 
-        // Show the selected page
         var targetPage = document.getElementById('page-' + pageId);
         if (targetPage) {
             targetPage.classList.add('active');
         }
 
-        // Update nav links
         document.querySelectorAll('.nav ul li a').forEach(function(link) {
             link.classList.remove('active');
         });
 
-        // Find the matching nav link
         document.querySelectorAll('.nav ul li a').forEach(function(link) {
             if (link.getAttribute('onclick') === "showPage('" + pageId + "')") {
                 link.classList.add('active');
             }
         });
 
-        // Scroll to top
         window.scrollTo(0, 0);
     }
 </script>
@@ -1166,7 +1740,8 @@
         const diff = targetDate - now;
 
         if (diff <= 0) {
-            document.querySelector('.clock').innerHTML = '<div style="color:#fff;font-size:2rem;">Event Started!</div>';
+            document.getElementById('countdown-clock').innerHTML = 
+                '<div class="clock-expired">🎉 The Event Has Arrived! 🎉</div>';
             return;
         }
 
@@ -1175,10 +1750,17 @@
         const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-        document.querySelector('.clock-block:nth-child(1) .value').textContent = String(days).padStart(2, '0');
-        document.querySelector('.clock-block:nth-child(2) .value').textContent = String(hours).padStart(2, '0');
-        document.querySelector('.clock-block:nth-child(3) .value').textContent = String(minutes).padStart(2, '0');
-        document.querySelector('.clock-block:nth-child(4) .value').textContent = String(seconds).padStart(2, '0');
+        document.getElementById('days').textContent = String(days).padStart(2, '0');
+        document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+        document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+        document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+
+        const secondsEl = document.getElementById('seconds');
+        secondsEl.style.transition = 'transform 0.1s ease';
+        secondsEl.style.transform = 'scale(1.1)';
+        setTimeout(() => {
+            secondsEl.style.transform = 'scale(1)';
+        }, 100);
     }
 
     updateCountdown();
