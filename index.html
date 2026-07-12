@@ -630,25 +630,149 @@
             color: #f7f7f7;
         }
 
-        /* === SOCIAL FEED === */
-        .feed-grid {
+        /* === COMMUNITY GALLERY === */
+        .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 16px;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 12px;
         }
 
-        .feed-item {
-            background: rgba(42, 42, 42, 0.8);
+        .gallery-item {
+            position: relative;
             aspect-ratio: 1;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #888;
-            font-size: 14px;
-            min-height: 150px;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            border: 2px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s ease;
+            background: rgba(42, 42, 42, 0.5);
         }
 
+        .gallery-item:hover {
+            transform: scale(1.03);
+            border-color: #00b7ff;
+            box-shadow: 0 8px 32px rgba(0, 183, 255, 0.2);
+            z-index: 2;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-item .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 12px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .gallery-item:hover .overlay {
+            opacity: 1;
+        }
+
+        .gallery-item .overlay span {
+            color: #fff;
+            font-size: 0.75rem;
+            opacity: 0.8;
+        }
+
+        .gallery-item .overlay .view-icon {
+            color: #00b7ff;
+            font-size: 0.85rem;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.92);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            cursor: pointer;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+        }
+
+        .lightbox .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: #fff;
+            font-size: 40px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            font-weight: 300;
+        }
+
+        .lightbox .close-btn:hover {
+            color: #00b7ff;
+        }
+
+        .lightbox .counter {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        .lightbox .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 50px;
+            cursor: pointer;
+            padding: 20px;
+            transition: color 0.3s ease;
+            user-select: none;
+        }
+
+        .lightbox .nav-btn:hover {
+            color: #00b7ff;
+        }
+
+        .lightbox .nav-btn.prev {
+            left: 20px;
+        }
+
+        .lightbox .nav-btn.next {
+            right: 20px;
+        }
+
+        /* Follow link */
         .follow-link {
             display: inline-flex;
             align-items: center;
@@ -975,6 +1099,92 @@
             margin: 16px 0 8px;
         }
 
+        /* === SPOTLIGHT SECTION === */
+        .spotlight-section {
+            padding: 24px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .spotlight-section:last-of-type {
+            border-bottom: none;
+        }
+
+        .spotlight-section h3 {
+            color: #00b7ff;
+            font-size: 1.6rem;
+            margin-bottom: 8px;
+        }
+
+        .spotlight-section .spotlight-sub {
+            color: #d0d0d0;
+            margin-bottom: 32px;
+            font-size: 1.05rem;
+        }
+
+        .spotlight-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .spotlight-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .spotlight-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(0, 183, 255, 0.3);
+            box-shadow: 0 12px 48px rgba(0, 183, 255, 0.1);
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .spotlight-card .guest-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 16px;
+            border: 3px solid rgba(0, 183, 255, 0.3);
+            transition: border-color 0.3s ease;
+            background: rgba(42, 42, 42, 0.5);
+        }
+
+        .spotlight-card:hover .guest-image {
+            border-color: #00b7ff;
+        }
+
+        .spotlight-card .guest-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .spotlight-card .guest-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+
+        .spotlight-card .guest-title {
+            font-size: 0.95rem;
+            color: #00b7ff;
+            margin-bottom: 8px;
+        }
+
+        .spotlight-card .guest-bio {
+            font-size: 0.9rem;
+            color: #b0b0b0;
+            line-height: 1.6;
+            max-width: 100%;
+        }
+
         /* === FOOTER === */
         .footer {
             background-color: rgba(0, 0, 0, 0.85);
@@ -1015,6 +1225,12 @@
         }
 
         /* === RESPONSIVE === */
+        @media (max-width: 1024px) {
+            .gallery-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
         @media (max-width: 768px) {
             .hero h1,
             .page-content h1 {
@@ -1027,10 +1243,6 @@
 
             .feature-grid {
                 grid-template-columns: 1fr;
-            }
-
-            .feed-grid {
-                grid-template-columns: 1fr 1fr;
             }
 
             .header-top {
@@ -1149,14 +1361,27 @@
             .admission-list {
                 grid-template-columns: 1fr 1fr;
             }
+
+            .about-highlight {
+                padding: 16px 20px;
+            }
+
+            .spotlight-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .spotlight-card .guest-image {
+                width: 140px;
+                height: 140px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 8px;
+            }
         }
 
         @media (max-width: 480px) {
-            .feed-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 8px;
-            }
-
             .clock {
                 gap: 10px;
             }
@@ -1261,7 +1486,44 @@
             }
 
             .about-highlight {
-                padding: 16px 20px;
+                padding: 12px 16px;
+            }
+
+            .spotlight-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .spotlight-card .guest-image {
+                width: 120px;
+                height: 120px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 6px;
+            }
+
+            .lightbox {
+                padding: 16px;
+            }
+
+            .lightbox .nav-btn {
+                font-size: 30px;
+                padding: 10px;
+            }
+
+            .lightbox .nav-btn.prev {
+                left: 5px;
+            }
+
+            .lightbox .nav-btn.next {
+                right: 5px;
+            }
+
+            .lightbox .close-btn {
+                top: 10px;
+                right: 20px;
+                font-size: 30px;
             }
         }
     </style>
@@ -1301,6 +1563,7 @@
     <!-- ===== HOME PAGE ===== -->
     <!-- ============================================================ -->
     <div id="page-home" class="page-content active">
+        <!-- HERO -->
         <section class="hero">
             <div class="container">
                 <h1>MidFlorida Card Expo</h1>
@@ -1309,6 +1572,50 @@
             </div>
         </section>
 
+        <!-- SPOTLIGHT SECTION -->
+        <section class="spotlight-section" style="padding: 40px 0 60px; background: rgba(0, 0, 0, 0.3); border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
+            <div class="container">
+                <h3 style="text-align: center; font-size: 2rem; color: #fff; margin-bottom: 8px;">⭐ Special Guest Spotlight</h3>
+                <p style="text-align: center; color: #d0d0d0; max-width: 700px; margin: 0 auto 32px;">Meet the amazing guests joining us at the MidFlorida Card Expo!</p>
+
+                <div class="spotlight-grid">
+                    <!-- Guest 1 - The Dew Boys -->
+                    <div class="spotlight-card">
+                        <div class="guest-image">
+                            <!-- REPLACE src WITH YOUR PNG IMAGE URL -->
+                            <img src="https://i.imgur.com/84YPRo3.png" alt="The Dew Boys">
+                        </div>
+                        <div class="guest-name">The Dew Boys</div>
+                        <div class="guest-title">Special Guest Performers</div>
+                        <p class="guest-bio">The Dew Boys are bringing their high-energy performance to the MidFlorida Card Expo! Get ready for an unforgettable show that will get the whole crowd moving.</p>
+                    </div>
+
+                    <!-- Guest 2 -->
+                    <div class="spotlight-card">
+                        <div class="guest-image">
+                            <!-- REPLACE src WITH YOUR PNG IMAGE URL -->
+                            <img src="https://via.placeholder.com/180x180/2a2a2a/00b7ff?text=Guest+2" alt="Guest 2">
+                        </div>
+                        <div class="guest-name">Guest Name 2</div>
+                        <div class="guest-title">Title / Role</div>
+                        <p class="guest-bio">Short bio description about this special guest and what they'll be doing at the expo.</p>
+                    </div>
+
+                    <!-- Guest 3 -->
+                    <div class="spotlight-card">
+                        <div class="guest-image">
+                            <!-- REPLACE src WITH YOUR PNG IMAGE URL -->
+                            <img src="https://via.placeholder.com/180x180/2a2a2a/00b7ff?text=Guest+3" alt="Guest 3">
+                        </div>
+                        <div class="guest-name">Guest Name 3</div>
+                        <div class="guest-title">Title / Role</div>
+                        <p class="guest-bio">Short bio description about this special guest and what they'll be doing at the expo.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SOCIAL MARQUEE -->
         <div class="social-bar">
             <div class="social-track">
                 <a href="https://www.facebook.com/Midfloridacardexpo" target="_blank" aria-label="Facebook">
@@ -1338,6 +1645,7 @@
             </div>
         </div>
 
+        <!-- COUNTDOWN -->
         <section class="countdown">
             <div class="container">
                 <h2>🎯 Countdown Begins!</h2>
@@ -1363,6 +1671,7 @@
             </div>
         </section>
 
+        <!-- ABOUT PREVIEW -->
         <section class="section-dark">
             <div class="container">
                 <h2 class="section-title">Discover the MidFlorida Card Expo</h2>
@@ -1387,18 +1696,19 @@
             </div>
         </section>
 
+        <!-- ===== COMMUNITY GALLERY ===== -->
         <section class="section-black">
             <div class="container">
-                <h2 class="section-title light">Instagram</h2>
-                <div class="feed-grid">
-                    <div class="feed-item">Image</div>
-                    <div class="feed-item">Image</div>
-                    <div class="feed-item">Image</div>
-                    <div class="feed-item">Image</div>
+                <h2 class="section-title light">📸 Community Gallery</h2>
+                <p style="text-align: center; color: #d0d0d0; max-width: 700px; margin: 0 auto 32px;">Check out moments from past events and see what you can expect!</p>
+
+                <div class="gallery-grid" id="galleryGrid">
+                    <!-- Gallery items will be generated by JavaScript -->
                 </div>
+
                 <div style="text-align: center; margin-top: 24px;">
-                    <a href="https://www.instagram.com/midfloridacardexpo" target="_blank" class="follow-link">
-                        Follow me on Instagram →
+                    <a href="#" class="follow-link" onclick="return false;">
+                        View All Photos →
                     </a>
                 </div>
             </div>
@@ -1406,16 +1716,25 @@
     </div>
 
     <!-- ============================================================ -->
-    <!-- ===== ABOUT PAGE - UPDATED ===== -->
+    <!-- ===== LIGHTBOX ===== -->
+    <!-- ============================================================ -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+        <span class="close-btn" onclick="closeLightbox()">×</span>
+        <span class="nav-btn prev" onclick="navigateGallery(-1)">‹</span>
+        <span class="nav-btn next" onclick="navigateGallery(1)">›</span>
+        <img id="lightboxImg" src="" alt="Gallery Image">
+        <span class="counter" id="lightboxCounter">1 / 20</span>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ===== ABOUT PAGE ===== -->
     <!-- ============================================================ -->
     <div id="page-about" class="page-content">
         <div class="container">
-            <!-- FLYER IMAGE AT THE TOP -->
             <div class="flyer-container">
                 <img src="https://i.imgur.com/m7QkdnD.jpeg" alt="MidFlorida Card Expo Flyer">
             </div>
 
-            <!-- PROMO CONTENT BLOCK -->
             <div class="promo-block">
                 <h2>Join us for MidFlorida Card Expo</h2>
                 <p class="promo-subtitle">🎉🔥 MIDFLORIDA CARD EXPO 🔥🎉</p>
@@ -1470,14 +1789,12 @@
                 </div>
             </div>
 
-            <!-- REGISTER NOW SECTION -->
             <div style="text-align: center; margin-bottom: 40px; padding: 32px; background: linear-gradient(135deg, rgba(0, 183, 255, 0.1), rgba(0, 0, 0, 0.4)); border-radius: 16px; border: 1px solid rgba(0, 183, 255, 0.15);">
                 <h2 style="color: #fff; font-size: 1.8rem; margin-bottom: 12px;">Register now for MidFlorida Card Expo!</h2>
                 <p style="color: #d0d0d0; max-width: 700px; margin: 0 auto 20px;">Don't wait! Secure your spot at MidFlorida Card Expo today and get ready to be blown away by the amazing performances and activities we have in store. Limited tickets available!</p>
                 <a href="https://midfloridacardexpo.simpletix.com/" target="_blank" class="btn-primary">Register Now</a>
             </div>
 
-            <!-- ABOUT CONTENT - UPDATED -->
             <h1>About MidFlorida Card Expo</h1>
             <p class="page-subtitle">Where passion, community, and the love of the hobby come together</p>
 
@@ -1846,7 +2163,7 @@
             </div>
             <div class="footer-copy">
                 Copyright &copy; 2026 MidFlorida Card Expo - All Rights Reserved.<br>
-                Powered by <a href="https://www.godaddy.com/websites/website-builder" target="_blank">Sydrel</a>
+                Powered by <a href="https://www.godaddy.com/websites/website-builder" target="_blank">GoDaddy</a>
             </div>
         </div>
     </footer>
@@ -1912,6 +2229,102 @@
 
     updateCountdown();
     setInterval(updateCountdown, 1000);
+</script>
+
+<!-- ===== GALLERY SCRIPT ===== -->
+<script>
+    // Generate 20 placeholder images
+    const galleryImages = [];
+    const imageCount = 20;
+
+    for (let i = 1; i <= imageCount; i++) {
+        // Using picsum.photos for random placeholder images
+        // Each image gets a unique seed for consistency
+        const seed = i * 100 + 50;
+        galleryImages.push({
+            id: i,
+            url: `https://picsum.photos/seed/${seed}/400/400`,
+            alt: `Community Gallery Image ${i}`
+        });
+    }
+
+    // Render gallery
+    function renderGallery() {
+        const grid = document.getElementById('galleryGrid');
+        if (!grid) return;
+
+        grid.innerHTML = '';
+        galleryImages.forEach((img, index) => {
+            const item = document.createElement('div');
+            item.className = 'gallery-item';
+            item.setAttribute('data-index', index);
+            item.innerHTML = `
+                <img src="${img.url}" alt="${img.alt}" loading="lazy">
+                <div class="overlay">
+                    <span>📸</span>
+                    <span class="view-icon">🔍 View</span>
+                </div>
+            `;
+            item.addEventListener('click', () => openLightbox(index));
+            grid.appendChild(item);
+        });
+    }
+
+    // Lightbox functionality
+    let currentIndex = 0;
+
+    function openLightbox(index) {
+        currentIndex = index;
+        const lightbox = document.getElementById('lightbox');
+        const img = document.getElementById('lightboxImg');
+        const counter = document.getElementById('lightboxCounter');
+        
+        img.src = galleryImages[index].url;
+        img.alt = galleryImages[index].alt;
+        counter.textContent = `${index + 1} / ${galleryImages.length}`;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox(event) {
+        if (event && event.target !== event.currentTarget && event.target.className !== 'close-btn') {
+            return;
+        }
+        const lightbox = document.getElementById('lightbox');
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    function navigateGallery(direction) {
+        currentIndex = (currentIndex + direction + galleryImages.length) % galleryImages.length;
+        const img = document.getElementById('lightboxImg');
+        const counter = document.getElementById('lightboxCounter');
+        
+        img.style.opacity = '0';
+        setTimeout(() => {
+            img.src = galleryImages[currentIndex].url;
+            img.alt = galleryImages[currentIndex].alt;
+            counter.textContent = `${currentIndex + 1} / ${galleryImages.length}`;
+            img.style.opacity = '1';
+        }, 200);
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', function(e) {
+        const lightbox = document.getElementById('lightbox');
+        if (!lightbox.classList.contains('active')) return;
+        
+        if (e.key === 'Escape') {
+            closeLightbox();
+        } else if (e.key === 'ArrowLeft') {
+            navigateGallery(-1);
+        } else if (e.key === 'ArrowRight') {
+            navigateGallery(1);
+        }
+    });
+
+    // Initialize gallery when page loads
+    document.addEventListener('DOMContentLoaded', renderGallery);
 </script>
 
 </body>
